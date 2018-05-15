@@ -453,6 +453,11 @@ where
         })
     }
 
+    /// Access the `Connect` implementation directly, bypassing the connection pool.
+    pub fn connector(&self) -> &C {
+        &self.connector
+    }
+
     fn connect_to(
         &self,
         pool_key: PoolKey,
