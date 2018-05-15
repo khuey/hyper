@@ -477,6 +477,11 @@ where C: Connect + Sync + 'static,
             })
     }
 
+    /// Access the `Connect` implementation directly, bypassing the connection pool.
+    pub fn connector(&self) -> &C {
+        &self.connector
+    }
+
     fn connect_to(&self, uri: Uri, pool_key: PoolKey)
         -> impl Lazy<Item=Pooled<PoolClient<B>>, Error=::Error>
     {
